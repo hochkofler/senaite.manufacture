@@ -55,6 +55,7 @@ setup(
         'plone.api>=1.8.4',
         'plone.app.dexterity',
         'senaite.core',
+        "zope.app.content>=3.5.1",
     ],
     extras_require={
         'test': [

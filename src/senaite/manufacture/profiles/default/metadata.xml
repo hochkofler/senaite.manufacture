@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
-<!-- /profiles/default/metadata.xml-->
 <metadata>
   <version>1000</version>
-  <description>Senaite Manufacture module</description>
   <dependencies>
-    <!-- Make sure Dexterity is in place -->
-    <dependency>profile-plone.app.dexterity:default</dependency>
+    <dependency>profile-senaite.lims:default</dependency>
   </dependencies>
-  <!-- the order matters: types first, then registry, then browserlayer -->
 </metadata>
