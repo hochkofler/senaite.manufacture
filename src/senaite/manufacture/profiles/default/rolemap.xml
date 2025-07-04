@@ -2,7 +2,7 @@
 <rolemap>
   <permissions>
   <!-- -*- extra stuff goes here -*- -->
-    <permission name="senaite.manufacture.FieldEditProducts" acquire="False">
+    <permission name="senaite.manufacture: Field: Edit Products" acquire="False">
       <role name="LabClerk"/>
       <role name="LabManager"/>
       <role name="Manager"/>
