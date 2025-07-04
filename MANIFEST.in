@@ -1,4 +1,9 @@
-graft src/senaite
-graft docs
+include LICENSE
 include *.rst
-global-exclude *.pyc
+include *.md
+exclude MANIFEST.in
+recursive-include docs *
+recursive-include static *
+recursive-include src/senaite/manufacture *
+recursive-exclude src/senaite/manufacture *.pyc
+recursive-exclude src/senaite/manufacture/locales/.tx *

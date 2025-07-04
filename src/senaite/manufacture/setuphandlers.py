@@ -14,50 +14,6 @@ SETUP_FOLDERS = [
     ("products", "Products", "Products"),
 ]
 
-# Workflow updates
-WORKFLOWS_TO_UPDATE = {
-    SAMPLE_WORKFLOW: {
-        "states": {
-            "verified": {
-                "preserve_transitions": True,
-                "permissions": {
-                    # Field permissions (read-only)
-                    permissions.FieldEditProducts: (),
-                }
-            },
-            "published": {
-                "preserve_transitions": True,
-                "permissions": {
-                    # Field permissions (read-only)
-                    permissions.FieldEditProducts: (),
-                }
-            },
-            "rejected": {
-                "preserve_transitions": True,
-                "permissions": {
-                    # Field permissions (read-only)
-                    permissions.FieldEditProducts: (),
-                }
-            },
-            "invalid": {
-                "preserve_transitions": True,
-                "permissions": {
-                    # Field permissions (read-only)
-                    permissions.FieldEditProducts: (),
-                }
-            },
-            "cancelled": {
-                "preserve_transitions": True,
-                "permissions": {
-                    # Field permissions (read-only)
-                    permissions.FieldEditProducts: (),
-                }
-            }
-        }
-    }
-}
-
-
 def setup_handler(context):
     """Generic setup handler
     """
@@ -121,8 +77,8 @@ def setup_workflows(portal):
     """Setup workflow changes (status, transitions, permissions, etc.)
     """
     logger.info("Setup storage workflow ...")
-    for wf_id, settings in WORKFLOWS_TO_UPDATE.items():
-        update_workflow(portal, wf_id, settings)
+    #for wf_id, settings in WORKFLOWS_TO_UPDATE.items():
+    #    update_workflow(portal, wf_id, settings)
 
 
 def update_workflow(portal, workflow_id, settings):

@@ -1,4 +1,0 @@
--c constraints_plone52.txt
-setuptools==44.1.1
-zc.buildout==2.13.3
-wheel
