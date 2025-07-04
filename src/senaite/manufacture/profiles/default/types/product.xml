@@ -46,18 +46,18 @@
 
   <!-- Python class for content items of this sort -->
   <property name="schema">senaite.manufacture.content.product.IProductSchema</property>
-  <property name="klass">senaite.manufacture.content.product.Product</property>
-  <property name="model_source"></property>
-  <property name="model_file"></property>
-
-  <property name="folderish">False</property>
-
   <!-- Dexterity behaviours for this type -->
   <property name="behaviors">
     <element value="bika.lims.interfaces.IAutoGenerateID" />
     <element value="bika.lims.interfaces.IMultiCatalogBehavior" />
     <element value="plone.app.referenceablebehavior.referenceable.IReferenceable" />
   </property>
+  <property name="klass">senaite.manufacture.content.product.Product</property>
+  <property name="model_source"></property>
+  <property name="model_file"></property>
+
+  <property name="folderish">False</property>
+
 
   <!-- Action aliases -->
   <alias from="(Default)" to="(dynamic view)" />
