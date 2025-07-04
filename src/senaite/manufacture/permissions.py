@@ -1,0 +1,1 @@
+FieldEditProducts = "senaite.manufacture.FieldEditProducts"

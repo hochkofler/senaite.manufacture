@@ -1,0 +1,5 @@
+===================
+senaite.manufacture
+===================
+
+User documentation

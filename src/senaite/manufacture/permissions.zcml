@@ -1,0 +1,8 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  i18n_domain="senaite.manufacture">
+
+  <permission
+    id="senaite.manufacture.FieldEditProducts"
+    title="senaite.manufacture: Field: Edit Products"/>
+</configure>

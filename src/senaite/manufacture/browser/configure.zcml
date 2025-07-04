@@ -1,0 +1,28 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="senaite.manufacture">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <!--<include package="z3c.jbot" file="meta.zcml" />-->
+  
+  <!-- Package includes -->
+  <include package=".content"/>
+  <include package=".theme"/>
+  
+  <!--
+  <browser:jbot
+      directory="overrides"
+      layer="senaite.manufacture.interfaces.ISenaiteManufactureLayer"
+      />
+  -->
+
+  <!-- Publish static files -->
+  <plone:static
+      name="senaite.manufacture.static"
+      type="plone"
+      directory="static"
+      />
+
+</configure>

@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="senaite.manufacture">
+
+  <!-- Product listing view -->
+  <browser:page
+      for="senaite.manufacture.interfaces.IProducts"
+      name="view"
+      class=".products.ProductsListingView"
+      permission="senaite.core.permissions.ManageBika"
+      layer="senaite.manufacture.interfaces.ISenaiteManufactureLayer" />
+
+</configure>
