@@ -39,10 +39,10 @@ class ProductsListingView(ListingView):
                 "title": _p("Description"),
                 "index": "Description"
             }),
-            ("MinimumUnit", {
-                "title": _("Minimum Unit"),
-                "index": "minimum_unit"
-            }),
+            # #("MinimumUnit", {
+            #     "title": _("Minimum Unit"),
+            #     "index": "minimum_unit"
+            # }),
             #("PrimaryPresentation", {
             #    "title": _("Primary Presentation"),
             #    "index": "primary_presentation"
@@ -90,11 +90,11 @@ class ProductsListingView(ListingView):
         """
         obj = api.get_object(obj)
         item["Title"] = obj.Title()
-        #item["Description"] = obj.Description()
+        item["Description"] = obj.Description()
         item["replace"]["Title"] = get_link_for(obj)
-        item["MinimumUnit"] = obj.minimum_unit
-        item["PrimaryPresentation"] = obj.primary_presentation
-        item["replace"]["Title"] = get_link_for(obj)
+        # item["MinimumUnit"] = obj.minimum_unit
+        # item["PrimaryPresentation"] = obj.primary_presentation
+        # item["replace"]["Title"] = get_link_for(obj)
         return item
 
     def get_children_hook(self, parent_uid, child_uids=None):
