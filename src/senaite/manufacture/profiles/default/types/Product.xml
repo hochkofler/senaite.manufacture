@@ -56,8 +56,6 @@
   <property name="model_source"></property>
   <property name="model_file"></property>
 
-  <property name="folderish">False</property>
-
 
   <!-- Action aliases -->
   <alias from="(Default)" to="(dynamic view)" />
