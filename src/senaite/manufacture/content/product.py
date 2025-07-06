@@ -96,20 +96,20 @@ class IProductSchema(model.Schema):
     #     required=True,
     # )
 
-    # @invariant
-    # def validate_title(data):
-    #     """Checks if the title for this product is unique
-    #     """
-    #     title = data.title.strip()
+    @invariant
+    def validate_title(data):
+        """Checks if the title for this product is unique
+        """
+        title = data.title.strip()
 
-    #     # https://community.plone.org/t/dexterity-unique-field-validation
-    #     context = getattr(data, "__context__", None)
-    #     if context is not None:
-    #         if context.title == title:
-    #             # nothing changed
-    #             return
+        # https://community.plone.org/t/dexterity-unique-field-validation
+        context = getattr(data, "__context__", None)
+        if context is not None:
+            if context.title == title:
+                # nothing changed
+                return
 
-    #     check_title(title, context, portal_type="Product")
+        check_title(title, context, portal_type="Product")
 
 @implementer(IProductSchema, IProduct, IDeactivable)
 class Product(Item):
