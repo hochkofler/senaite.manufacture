@@ -31,7 +31,7 @@ class IProductSchema(model.Schema):
         required=True,
     )
     
-    directives.mode(title='add')
+    #directives.mode(title='add')
     description = schema.Text(
         title=_(
             "title_product_description",
@@ -96,20 +96,20 @@ class IProductSchema(model.Schema):
     #     required=True,
     # )
 
-    @invariant
-    def validate_title(data):
-        """Checks if the title for this product is unique
-        """
-        title = data.title.strip()
+    # @invariant
+    # def validate_title(data):
+    #     """Checks if the title for this product is unique
+    #     """
+    #     title = data.title.strip()
 
-        # https://community.plone.org/t/dexterity-unique-field-validation
-        context = getattr(data, "__context__", None)
-        if context is not None:
-            if context.title == title:
-                # nothing changed
-                return
+    #     # https://community.plone.org/t/dexterity-unique-field-validation
+    #     context = getattr(data, "__context__", None)
+    #     if context is not None:
+    #         if context.title == title:
+    #             # nothing changed
+    #             return
 
-        check_title(title, context, portal_type="Product")
+    #     check_title(title, context, portal_type="Product")
 
 @implementer(IProductSchema, IProduct, IDeactivable)
 class Product(Item):
@@ -136,18 +136,18 @@ class Product(Item):
             return None
         return schema[fieldname].set
 
-    @security.protected(permissions.View)
-    def getTitle(self):
-        accessor = self.accessor("title")
-        return accessor(self)
+    # @security.protected(permissions.View)
+    # def getTitle(self):
+    #     accessor = self.accessor("title")
+    #     return accessor(self)
 
-    @security.protected(permissions.ModifyPortalContent)
-    def setTitle(self, value):
-        current = self.title
-        value = value.strip()
+    # @security.protected(permissions.ModifyPortalContent)
+    # def setTitle(self, value):
+    #     current = self.title
+    #     value = value.strip()
         
-        if current and value != current:
-            raise ValueError(_("The product code cannot be changed"))
+    #     if current and value != current:
+    #         raise ValueError(_("The product code cannot be changed"))
 
-        check_title(value, self)
-        self.mutator("title")(self, value)
+    #     check_title(value, self)
+    #     self.mutator("title")(self, value)
