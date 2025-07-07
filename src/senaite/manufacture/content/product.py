@@ -108,7 +108,7 @@ class IProductSchema(model.Schema):
             if context.title == title:
                 # nothing changed
                 return
-            raise ValueError(_("The product code cannot be changed"))
+            raise Invalid(_("The product code cannot be changed"))
 
         check_title(title, context, portal_type="Product")
 
@@ -136,19 +136,3 @@ class Product(Item):
         if fieldname not in schema:
             return None
         return schema[fieldname].set
-
-    # @security.protected(permissions.View)
-    # def getTitle(self):
-    #     accessor = self.accessor("title")
-    #     return accessor(self)
-
-    # @security.protected(permissions.ModifyPortalContent)
-    # def setTitle(self, value):
-    #     current = self.title
-    #     value = value.strip()
-        
-    #     if current and value != current:
-    #         raise ValueError(_("The product code cannot be changed"))
-
-    #     check_title(value, self)
-    #     self.mutator("title")(self, value)
