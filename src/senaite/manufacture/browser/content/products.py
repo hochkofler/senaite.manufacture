@@ -39,14 +39,18 @@ class ProductsListingView(ListingView):
                 "title": _p("Description"),
                 "index": "Description"
             }),
-            # #("MinimumUnit", {
-            #     "title": _("Minimum Unit"),
-            #     "index": "minimum_unit"
-            # }),
-            #("PrimaryPresentation", {
-            #    "title": _("Primary Presentation"),
-            #    "index": "primary_presentation"
-            #}),
+            ("MinimumUnit", {
+                "title": _("Minimum Unit"),
+                "index": "minimum_unit"
+            }),
+            ("PrimaryPresentation", {
+               "title": _("Primary Presentation"),
+               "index": "primary_presentation"
+            }),
+            ("SecondaryPresentation", {
+               "title": _("Secondary Presentation"),
+               "index": "secondary_presentation"
+            }),
         ))
 
         self.review_states = [
@@ -92,9 +96,9 @@ class ProductsListingView(ListingView):
         item["Title"] = obj.Title()
         item["Description"] = obj.Description()
         item["replace"]["Title"] = get_link_for(obj)
-        # item["MinimumUnit"] = obj.minimum_unit
-        # item["PrimaryPresentation"] = obj.primary_presentation
-        # item["replace"]["Title"] = get_link_for(obj)
+        item["MinimumUnit"] = obj.minimum_unit
+        item["PrimaryPresentation"] = obj.primary_presentation
+        item["SecondaryPresentation"] = obj.secondary_presentation
         return item
 
     def get_children_hook(self, parent_uid, child_uids=None):

@@ -40,61 +40,61 @@ class IProductSchema(model.Schema):
         required=True,
     )
 
-    #directives.widget(
-    #     "sample_matrix",
-    #     UIDReferenceWidgetFactory,
-    #     catalog=SETUP_CATALOG,
-    #     query={
-    #         "is_active": True,
-    #         "sort_on": "title",
-    #         "sort_order": "ascending",
-    #     },
-    # )
-    # sample_matrix = UIDReferenceField(
-    #     title=_(
-    #         u"label_product_samplematrix",
-    #         default=u"Sample Matrix"
-    #     ),
-    #     description=_(
-    #         u"description_product_samplematrix",
-    #         default=u"Select the sample matrix for this product"
-    #     ),
-    #     allowed_types=("SampleMatrix", ),
-    #     multi_valued=False,
-    #     required=False,
-    # )
+    directives.widget(
+        "sample_matrix",
+        UIDReferenceWidgetFactory,
+        catalog=SETUP_CATALOG,
+        query={
+            "is_active": True,
+            "sort_on": "title",
+            "sort_order": "ascending",
+        },
+    )
+    sample_matrix = UIDReferenceField(
+        title=_(
+            u"label_product_samplematrix",
+            default=u"Sample Matrix"
+        ),
+        description=_(
+            u"description_product_samplematrix",
+            default=u"Select the sample matrix for this product"
+        ),
+        allowed_types=("SampleMatrix", ),
+        multi_valued=False,
+        required=False,
+    )
 
-    # minimum_unit = schema.TextLine(
-    #     title=_(
-    #         u"title_product_minimum_unit",
-    #         default=u"Minimum Unit",
-    #     ),
-    #     required=True,
-    # )
+    minimum_unit = schema.TextLine(
+        title=_(
+            u"title_product_minimum_unit",
+            default=u"Minimum Unit",
+        ),
+        required=True,
+    )
 
-    # primary_presentation = schema.Int(
-    #     title=_(
-    #         u"title_product_primary_presentation",
-    #         default=u"Primary Presentation",
-    #     ),
-    #     description=_(
-    #         u"description_product_primary_presentation",
-    #         default=u"Primary presentation of the product in minimum unit, e.g. 10 tablets, 1 bottle, etc.",
-    #     ),
-    #     required=True,
-    # )
+    primary_presentation = schema.Int(
+        title=_(
+            u"title_product_primary_presentation",
+            default=u"Primary Presentation",
+        ),
+        description=_(
+            u"description_product_primary_presentation",
+            default=u"Primary presentation of the product in minimum unit, e.g. 10 tablets, 1 bottle, etc.",
+        ),
+        required=True,
+    )
 
-    # secundary_presentation = schema.Int(
-    #     title=_(
-    #         u"title_product_secondary_presentation",
-    #         default=u"Secondary Presentation",
-    #     ),
-    #     description=_(
-    #         u"description_product_secondary_presentation",
-    #         default=u"Secondary presentation of the product in minimum unit, e.g. 100 tablets, 10 bottles, etc.",
-    #     ),
-    #     required=True,
-    # )
+    secundary_presentation = schema.Int(
+        title=_(
+            u"title_product_secondary_presentation",
+            default=u"Secondary Presentation",
+        ),
+        description=_(
+            u"description_product_secondary_presentation",
+            default=u"Secondary presentation of the product in minimum unit, e.g. 100 tablets, 10 bottles, etc.",
+        ),
+        required=True,
+    )
 
     @invariant
     def validate_title(data):
