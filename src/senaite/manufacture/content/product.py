@@ -84,7 +84,7 @@ class IProductSchema(model.Schema):
         required=True,
     )
 
-    secundary_presentation = schema.Int(
+    secondary_presentation = schema.Int(
         title=_(
             u"title_product_secondary_presentation",
             default=u"Secondary Presentation",
