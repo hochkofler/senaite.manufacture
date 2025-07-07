@@ -31,7 +31,7 @@ class IProductSchema(model.Schema):
         required=True,
     )
     
-    directives.mode(title='add')
+    #directives.mode(title='add')
     description = schema.Text(
         title=_(
             "title_product_description",
