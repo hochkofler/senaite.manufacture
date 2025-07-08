@@ -3,7 +3,6 @@ from bika.lims import api
 from bika.lims import senaiteMessageFactory as _s
 from bika.lims.utils import get_link_for
 from senaite.app.listing import ListingView
-from senaite.core import PloneMessageFactory as _p
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.manufacture import messageFactory as _
 
@@ -36,8 +35,13 @@ class ProductsListingView(ListingView):
                 "index": "sortable_title"
             }),
             ("Description", {
-                "title": _p("Description"),
+                "title": _("Description"),
                 "index": "Description"
+            }),
+            ("SampleMatrix", {
+                "title": _("Sample Matrix"),
+                "index": "sample_matrix",
+                "sortable": True,
             }),
             ("MinimumUnit", {
                 "title": _("Minimum Unit"),
@@ -99,6 +103,7 @@ class ProductsListingView(ListingView):
         item["MinimumUnit"] = obj.minimum_unit
         item["PrimaryPresentation"] = obj.primary_presentation
         item["SecondaryPresentation"] = obj.secondary_presentation
+        item["SampleMatrix"] = obj.sample_matrix
         return item
 
     def get_children_hook(self, parent_uid, child_uids=None):

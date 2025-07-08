@@ -31,7 +31,6 @@ class IProductSchema(model.Schema):
         required=True,
     )
     
-    #directives.mode(title='add')
     description = schema.Text(
         title=_(
             "title_product_description",
@@ -61,7 +60,7 @@ class IProductSchema(model.Schema):
         ),
         allowed_types=("SampleMatrix", ),
         multi_valued=False,
-        required=False,
+        required=True,
     )
 
     minimum_unit = schema.TextLine(

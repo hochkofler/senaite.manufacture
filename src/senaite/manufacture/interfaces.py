@@ -17,10 +17,10 @@ class IContentFolder(IHideActionsMenu, IDoNotSupportSnapshots):
 
 
 class IProducts(IContentFolder):
-    """Marker interface for container of Diseases
+    """Marker interface for container of Product objects
     """
 
 
 class IProduct(Interface):
-    """Marker interface for Disease objects
+    """Marker interface for Product objects
     """
