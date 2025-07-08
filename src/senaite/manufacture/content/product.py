@@ -135,3 +135,8 @@ class Product(Item):
         if fieldname not in schema:
             return None
         return schema[fieldname].set
+    
+    @security.protected(permissions.View)
+    def getSampleMatrix(self):
+        accessor = self.accessor("sample_matrix")
+        return accessor(self)
