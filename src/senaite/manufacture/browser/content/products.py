@@ -104,6 +104,7 @@ class ProductsListingView(ListingView):
         item["PrimaryPresentation"] = obj.primary_presentation
         item["SecondaryPresentation"] = obj.secondary_presentation
         item["SampleMatrix"] = obj.sample_matrix
+        item["replace"]["SampleMatrix"] = get_link_for(obj.sample_matrix)
         return item
 
     def get_children_hook(self, parent_uid, child_uids=None):
