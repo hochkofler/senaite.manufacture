@@ -1,6 +1,8 @@
 from archetypes.schemaextender.field import ExtensionField
 from bika.lims.browser.fields import UIDReferenceField as UIDATReferenceField
-from senaite.core.schema import UIDReferenceField as UIDDXReferenceField, IntField, DatetimeField
+from senaite.core.schema.uidreferencefield import UIDReferenceField as UIDDXReferenceField
+from senaite.core.schema.datetimefield import DatetimeField
+from senaite.core.schema.fields import IntField
 
 class ExtATUIDReferenceField(ExtensionField, UIDATReferenceField):
     """Field Extender of core's UIDReferenceField for AT types
