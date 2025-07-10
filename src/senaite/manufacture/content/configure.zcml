@@ -6,8 +6,9 @@
   <include package="archetypes.schemaextender" />
 
   <adapter
-      name="senaite.manufacture.batch.schemaextender"
+      for="bika.lims.interfaces.IBatch"
       provides="archetypes.schemaextender.interfaces.ISchemaExtender"
-      factory=".batch.BatchSchemaExtender" /> 
+      factory=".batch.BatchSchemaExtender"
+      />
 
 </configure>
