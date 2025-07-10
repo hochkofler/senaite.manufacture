@@ -3,11 +3,11 @@
     i18n_domain="senaite.manufacture">
 
   <!-- Schema extender for AnalysisRequest (Sample) -->
-  <!-- <include package="archetypes.schemaextender" />
+  <include package="archetypes.schemaextender" />
 
   <adapter
-      name="senaite.manufacture.analysisrequest.schemaextender"
+      name="senaite.manufacture.batch.schemaextender"
       provides="archetypes.schemaextender.interfaces.ISchemaExtender"
-      factory=".analysisrequest.AnalysisRequestSchemaExtender" /> -->
+      factory=".batch.BatchSchemaExtender" /> 
 
 </configure>

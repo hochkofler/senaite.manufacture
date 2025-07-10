@@ -11,7 +11,6 @@ from senaite.core.catalog import SETUP_CATALOG
 from senaite.manufacture.interfaces import IProduct
 from zope import schema
 from zope.interface import implementer, invariant, Invalid
-from senaite.manufacture.content.fields import ExtUIDReferenceField
 from senaite.core.z3cform.widgets.uidreference import UIDReferenceWidgetFactory
 from senaite.core.schema import UIDReferenceField
 from senaite.manufacture.utils import check_title
