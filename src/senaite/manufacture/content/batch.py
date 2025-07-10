@@ -2,7 +2,7 @@ from zope.interface import implements
 from zope.component import adapts
 from archetypes.schemaextender.interfaces import ISchemaExtender
 from bika.lims.interfaces import IBatch
-from fields import IntegerExtensionField
+from fields import ExtIntegerField
 from senaite.manufacture import messageFactory as _
 
 class BatchSchemaExtender(object):
@@ -14,7 +14,7 @@ class BatchSchemaExtender(object):
 
     def getFields(self):
         return [
-            IntegerExtensionField(
+            ExtIntegerField(
                 title=_(
                     u"title_batch_size",
                     default=u"Batch Size",
