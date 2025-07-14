@@ -2,11 +2,9 @@ from zope.interface import implements, implementer
 from zope.component import adapts
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender, IOrderableSchemaExtender
 from archetypes.schemaextender.field import ExtensionField
-from plone.autoform import directives
+from Products.CMFCore.permissions import View
 from senaite.core.catalog import SETUP_CATALOG
-from senaite.core.schema import UIDReferenceField
 from senaite.manufacture import messageFactory as _
-from senaite.core.z3cform.widgets.uidreference import UIDReferenceWidgetFactory
 from Products.Archetypes.Field import StringField, IntegerField, ReferenceField
 from Products.Archetypes.Widget import IntegerWidget, ReferenceWidget
 from bika.lims.interfaces import IBatch
@@ -39,25 +37,32 @@ ReleasedQuantity = IntegerExtensionField(
                 required=False,
             )
 
-directives.widget(
-        "sample_matrix",
-        UIDReferenceWidgetFactory,
-        catalog=SETUP_CATALOG,
-        query={
-            "is_active": True,
-            "sort_on": "title",
-            "sort_order": "ascending",
-        },
-    )
-product = UIDReferenceField(
-        title=_(
-            u"label_batch_product",
-            default=u"Product"
-        ),
+product = ReferenceExtensionField(
+        name = "product",
         allowed_types=("Product", ),
-        multi_valued=False,
-        required=True,
-    )
+        multiValued=False,
+        read_permission=View,
+        widget=ReferenceWidget(
+            label=_(
+                "label_batch_product",
+                default="Product"
+            ),
+            description=_(
+                "description_batch_product",
+                default="Product associated with this batch"
+            ),
+            render_own_label=True,
+            visible={
+                "add": "edit",
+            },
+            catalog_name=SETUP_CATALOG,
+            base_query={
+                "is_active": True,
+                "sort_on": "sortable_title",
+                "sort_order": "ascending",
+            },
+        )
+    ),
 
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
