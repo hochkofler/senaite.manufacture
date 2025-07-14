@@ -2,6 +2,7 @@ from zope.interface import implements, implementer
 from zope.component import adapts
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender, IOrderableSchemaExtender
 from archetypes.schemaextender.field import ExtensionField
+from bika.lims.browser.fields import UIDReferenceField
 from Products.CMFCore.permissions import View
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.manufacture import messageFactory as _
@@ -18,6 +19,10 @@ class IntegerExtensionField(ExtensionField, IntegerField):
 
 class ReferenceExtensionField(ExtensionField, ReferenceField):
     pass
+
+class ExtUIDReferenceField(ExtensionField, UIDReferenceField):
+    """Field Extender of core's UIDReferenceField for AT types
+    """
 
 BatchSize = IntegerExtensionField(
                 name="batchSize",
@@ -37,7 +42,7 @@ ReleasedQuantity = IntegerExtensionField(
                 required=False,
             )
 
-product = ReferenceExtensionField(
+product = ExtUIDReferenceField(
         name = "product",
         allowed_types=("Product", ),
         multiValued=False,
