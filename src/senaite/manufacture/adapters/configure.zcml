@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="senaite.manufacture">
+
+<!-- Samples listing with additional filters and columns -->
+  <subscriber
+    for="bika.lims.browser.batchfolder.BatchFolderContentsView
+         bika.lims.interfaces.IBatchFolder"
+    provides="senaite.app.listing.interfaces.IListingViewAdapter"
+    factory=".listing.BatchesListingAdapter" />
+  <subscriber
+    for="bika.lims.browser.batchfolder.BatchFolderContentsView
+         bika.lims.interfaces.IClient"
+    provides="senaite.app.listing.interfaces.IListingViewAdapter"
+    factory=".listing.BatchesListingAdapter" />
+  <subscriber
+    for="bika.lims.browser.batchfolder.BatchFolderContentsView
+         bika.lims.interfaces.IBatch"
+    provides="senaite.app.listing.interfaces.IListingViewAdapter"
+    factory=".listing.BatchesListingAdapter" />
+
+</configure>

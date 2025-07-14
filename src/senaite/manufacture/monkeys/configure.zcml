@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
+    i18n_domain="senaite.manufacture">
+
+  <!-- Batch Size -->
+  <monkey:patch
+    description="Batch size of the batch"
+    class="bika.lims.content.batch.Batch"
+    original="getBatchSize"
+    ignoreOriginal="True"
+    replacement=".content.batch.getBatchSize" />
+
+  <!-- Batch Realise date -->
+  <monkey:patch
+    description="Batch release date"
+    class="bika.lims.content.batch.Batch"
+    original="getReleasedQuantity"
+    ignoreOriginal="True"
+    replacement=".content.batch.getReleasedQuantity" />
+
+
+</configure>
