@@ -17,7 +17,7 @@ from zope.interface import implements
 ADD_COLUMNS = [
     ("BatchSize", {
         "title": _("BatchSize"),
-        "sortable": True,
+        "sortable": False,
     }),
     ("ReleasedQuantity", {
         "title": _("ReleasedQuantity"),
@@ -52,11 +52,9 @@ class BatchesListingAdapter(object):
     @check_installed(None)
     def folder_item(self, obj, item, index):
 
-        batch_batch_size = api.to_utf8(
-            obj.getBatchSize, default="")
+        batch_batch_size = api.get_object(obj).getBatchSize()
 
-        batch_ReleasedQuantity = api.to_utf8(
-            obj.getReleasedQuantity, default="")
+        batch_ReleasedQuantity = api.get_object(obj).getReleasedQuantity()
 
         item["BatchSize"] = batch_batch_size
         item["ReleasedQuantity"] = batch_ReleasedQuantity
