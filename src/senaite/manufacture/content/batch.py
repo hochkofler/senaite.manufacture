@@ -35,7 +35,6 @@ ReleasedQuantity = IntegerExtensionField(
             )
 
 
-
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
     """Schema extender for the Batch content type."""
