@@ -18,11 +18,7 @@ class IntegerExtensionField(ExtensionField, IntegerField):
     pass
 
 class ReferenceExtensionField(ExtensionField, ReferenceField):
-    pass
-
-class ExtUIDReferenceField(ExtensionField, UIDReferenceField):
-    """Field Extender of core's UIDReferenceField for AT types
-    """
+    """Make ReferenceField extensible"""
 
 BatchSize = IntegerExtensionField(
                 name="batchSize",
@@ -42,32 +38,20 @@ ReleasedQuantity = IntegerExtensionField(
                 required=False,
             )
 
-product = ExtUIDReferenceField(
-        name = "product",
-        allowed_types=("Product", ),
-        multiValued=False,
-        read_permission=View,
-        widget=ReferenceWidget(
-            label=_(
-                "label_batch_product",
-                default="Product"
-            ),
-            description=_(
-                "description_batch_product",
-                default="Product associated with this batch"
-            ),
-            render_own_label=True,
-            visible={
-                "add": "edit",
-            },
-            catalog_name=SETUP_CATALOG,
-            base_query={
-                "is_active": True,
-                "sort_on": "sortable_title",
-                "sort_order": "ascending",
-            },
-        )
+product = ReferenceExtensionField(
+    name="product",
+    allowed_types=("Product",),
+    relationship="BatchProduct",
+    multiValued=False,
+    read_permission=View,
+    widget=ReferenceWidget(
+        label=_(u"Product"),
+        description=_(u"Product associated with this batch"),
+        visible={"add": "edit", "edit": "edit"},
+        base_query={"is_active": True},
     ),
+    required=False,
+)
 
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
