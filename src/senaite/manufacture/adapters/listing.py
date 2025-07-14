@@ -55,10 +55,12 @@ class BatchesListingAdapter(object):
     def folder_item(self, obj, item, index):
 
         batch_batch_size = api.to_utf8(
-            obj.getBatchSize, default="")
+            obj.getId, default="")
+            #obj.getBatchSize, default="")
 
         batch_ReleasedQuantity = api.to_utf8(
-            obj.getReleasedQuantity, default="")
+            obj.getId, default="")
+            #obj.getReleasedQuantity, default="")
 
         item["BatchSize"] = batch_batch_size
         item["ReleasedQuantity"] = batch_ReleasedQuantity
