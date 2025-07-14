@@ -18,12 +18,12 @@ ADD_COLUMNS = [
     ("BatchSize", {
         "title": _("BatchSize"),
         "sortable": False,
-        "after": "getBatchID",
+        "after": "Title",
     }),
     ("ReleasedQuantity", {
         "title": _("ReleasedQuantity"),
         "sortable": False,
-        "after": "getBatchID",
+        "after": "Title",
     }),
 ]
 
