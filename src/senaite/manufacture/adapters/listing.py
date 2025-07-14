@@ -65,6 +65,8 @@ class BatchesListingAdapter(object):
         item["BatchSize"] = batch_batch_size
         item["ReleasedQuantity"] = batch_ReleasedQuantity
 
+        #return item
+
 
     @check_installed(None)
     def before_render(self):
@@ -77,3 +79,7 @@ class BatchesListingAdapter(object):
                 column_values=column_values,
                 after=column_values.get("after", None),
                 review_states=rv_keys)
+            
+        review_states = [self.listing.review_states[0]]
+        for review_state in review_states:
+            review_state.update({"columns": self.listing.columns.keys()})
