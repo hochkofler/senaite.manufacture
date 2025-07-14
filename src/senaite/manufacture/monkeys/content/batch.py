@@ -10,4 +10,4 @@ def getBatchSize(self):  # noqa camelcase, but compliant with AT's
 def getReleasedQuantity(self):  # noqa camelcase, but compliant with AT's
     """Returns the batch released quantity
     """
-    return self.getField("ReleasedQuantity").get(self)
+    return self.getField("releasedQuantity").get(self)
