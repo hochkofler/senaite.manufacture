@@ -49,7 +49,7 @@ directives.widget(
             "sort_order": "ascending",
         },
     )
-sample_matrix = UIDReferenceField(
+product = UIDReferenceField(
         title=_(
             u"label_batch_product",
             default=u"Product"
@@ -75,4 +75,5 @@ class BatchSchemaExtender(object):
         return [
             BatchSize,
             ReleasedQuantity,
+            product,
         ]
