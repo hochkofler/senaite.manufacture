@@ -59,7 +59,7 @@ class BatchesListingAdapter(object):
             #obj.getBatchSize, default="")
 
         batch_ReleasedQuantity = api.to_utf8(
-            obj.get_title, default="")
+            obj.getBatchID, default="")
             #obj.getReleasedQuantity, default="")
 
         item["BatchSize"] = batch_batch_size
