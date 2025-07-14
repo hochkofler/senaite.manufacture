@@ -4,7 +4,7 @@ from senaite.manufacture import check_installed
 def getBatchSize(self):  # noqa camelcase, but compliant with AT's
     """Returns the batch size
     """
-    return self.getField("BatchSize").get(self)
+    return self.getField("batchSize").get(self)
 
 @check_installed(None)
 def getReleasedQuantity(self):  # noqa camelcase, but compliant with AT's
