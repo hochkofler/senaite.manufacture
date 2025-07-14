@@ -17,8 +17,10 @@
   <include file="permissions.zcml" />
 
   <!-- Package includes -->
+  <include package=".adapters"/>
   <include package=".browser"/>
   <include package=".content"/>
+  <include package=".monkeys"/>
   <include package=".subscribers"/>
 
   <!-- Default profile -->
