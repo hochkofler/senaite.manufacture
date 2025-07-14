@@ -1,7 +1,12 @@
 from zope.interface import implements, implementer
 from zope.component import adapts
-from archetypes.schemaextender.interfaces import ISchemaExtender, IBrowserLayerAwareExtender, IOrderableSchemaExtender
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender, IOrderableSchemaExtender
 from archetypes.schemaextender.field import ExtensionField
+from plone.autoform import directives
+from senaite.core.catalog import SETUP_CATALOG
+from senaite.core.schema import UIDReferenceField
+from senaite.manufacture import messageFactory as _
+from senaite.core.z3cform.widgets.uidreference import UIDReferenceWidgetFactory
 from Products.Archetypes.Field import StringField, IntegerField, ReferenceField
 from Products.Archetypes.Widget import IntegerWidget, ReferenceWidget
 from bika.lims.interfaces import IBatch
@@ -22,7 +27,7 @@ BatchSize = IntegerExtensionField(
                     label=u"Batch Size",
                     description=u"Total quantity produced for this batch"
                 ),
-                required=False,
+                required=True,
             )
 
 ReleasedQuantity = IntegerExtensionField(
@@ -34,6 +39,25 @@ ReleasedQuantity = IntegerExtensionField(
                 required=False,
             )
 
+directives.widget(
+        "sample_matrix",
+        UIDReferenceWidgetFactory,
+        catalog=SETUP_CATALOG,
+        query={
+            "is_active": True,
+            "sort_on": "title",
+            "sort_order": "ascending",
+        },
+    )
+sample_matrix = UIDReferenceField(
+        title=_(
+            u"label_batch_product",
+            default=u"Product"
+        ),
+        allowed_types=("Product", ),
+        multi_valued=False,
+        required=True,
+    )
 
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
