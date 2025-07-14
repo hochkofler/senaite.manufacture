@@ -7,7 +7,7 @@ def getBatchSize(self):  # noqa camelcase, but compliant with AT's
     return self.getField("BatchSize").get(self)
 
 @check_installed(None)
-def getBatchReleasedQuantity(self):  # noqa camelcase, but compliant with AT's
+def getReleasedQuantity(self):  # noqa camelcase, but compliant with AT's
     """Returns the batch released quantity
     """
     return self.getField("ReleasedQuantity").get(self)
