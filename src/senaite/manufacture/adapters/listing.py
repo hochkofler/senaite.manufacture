@@ -21,7 +21,7 @@ ADD_COLUMNS = [
     }),
     ("ReleasedQuantity", {
         "title": _("ReleasedQuantity"),
-        "sortable": False,
+        "sortable": True,
     }),
 ]
 
@@ -57,12 +57,13 @@ class BatchesListingAdapter(object):
             #obj.getBatchSize, default="")
 
         batch_ReleasedQuantity = api.to_utf8(
-            obj.getBatchID, default="")
+            obj.getId, default="")
             #obj.getReleasedQuantity, default="")
 
         item["BatchSize"] = batch_batch_size
         #item["ReleasedQuantity"] = batch_ReleasedQuantity
-        item["ReleasedQuantity"] = api.get_object(obj).getId()
+        #item["ReleasedQuantity"] = api.get_object(obj).getId()
+        item["ReleasedQuantity"] = api.get_object(obj).getBatchSize()
         return item
 
 
