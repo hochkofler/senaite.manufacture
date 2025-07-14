@@ -2,23 +2,20 @@ from zope.interface import implements, implementer
 from zope.component import adapts
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender, IOrderableSchemaExtender
 from archetypes.schemaextender.field import ExtensionField
-from bika.lims.browser.fields import UIDReferenceField
 from Products.CMFCore.permissions import View
 from senaite.core.catalog import SETUP_CATALOG
 from senaite.manufacture import messageFactory as _
-from Products.Archetypes.Field import StringField, IntegerField, ReferenceField
+from Products.Archetypes.Field import StringField, IntegerField
 from Products.Archetypes.Widget import IntegerWidget, ReferenceWidget
 from bika.lims.interfaces import IBatch
 from senaite.manufacture.interfaces import ISenaiteManufactureLayer
+from fields import ExtATUIDReferenceField
 
 class StringExtensionField(ExtensionField, StringField):
     pass
 
 class IntegerExtensionField(ExtensionField, IntegerField):
     pass
-
-class ReferenceExtensionField(ExtensionField, ReferenceField):
-    """Make ReferenceField extensible"""
 
 BatchSize = IntegerExtensionField(
                 name="batchSize",
@@ -38,20 +35,33 @@ ReleasedQuantity = IntegerExtensionField(
                 required=False,
             )
 
-product = ReferenceExtensionField(
-    name="product",
-    allowed_types=("Product",),
-    relationship="BatchProduct",
-    multiValued=False,
-    read_permission=View,
-    widget=ReferenceWidget(
-        label=_(u"Product"),
-        description=_(u"Product associated with this batch"),
-        visible={"add": "edit", "edit": "edit"},
-        base_query={"is_active": True},
-    ),
-    required=False,
-)
+product = ExtATUIDReferenceField(
+    "Product",
+        allowed_types=("Product", ),
+        multiValued=False,
+        read_permission=View,
+        write_permission=View,
+        widget=ReferenceWidget(
+            label=_(
+                "label_batch_product",
+                default="Product"
+            ),
+            description=_(
+                "description_batch_product",
+                default="Select the product associated with this batch"
+            ),
+            render_own_label=True,
+            visible={
+                "add": "edit",
+            },
+            catalog_name=SETUP_CATALOG,
+            base_query={
+                "is_active": True,
+                "sort_on": "sortable_title",
+                "sort_order": "ascending",
+            },
+        )
+    )
 
 @implementer(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
 class BatchSchemaExtender(object):
